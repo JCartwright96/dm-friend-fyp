@@ -10,3 +10,4 @@ How to use DM Friend:
 4. In XAMPP start both apache and mysql
 5. Open web browser and search **localhost/DMFriend/fyp/** in URL bar
 
+# this readme was intended for marking purposes during university and may/may not work presently #
