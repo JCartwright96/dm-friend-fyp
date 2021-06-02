@@ -1,0 +1,46 @@
+{% extends 'no_nav_layout.html.twig' %}
+{% block title %} DM Friend {% endblock %}
+{%  block content %}
+    <p>{{ welcome_message }}</p>
+    <p>{{ login_message }}</p>
+
+    <section class="login_form">
+    <h3>Login</h3>
+    <form method="{{ method }}" action="{{ login_action }}">
+        <p class="error_message">{{ login_error }}</p>
+        <label for="username">Username: </label>
+        <br/>
+        <input type="text" name="username_input" id="username" required>
+        <br/>
+        <label for="password">Password: </label>
+        <br/>
+        <input type="password" name="password_input" id="password" required>
+        <br/><br/>
+        <input type="submit" value="Log In"/>
+    </form>
+    </section>
+
+    <section class="login_form">
+    <h3>Sign Up</h3>
+    <form method="{{ method }}" action="{{ signup_action }}">
+        <p class="error_message">{{ signup_error }}</p>
+        <label for="username">Email: </label>
+        <br/>
+        <input type="email" name="email_input" id="email" required>
+        <br/>
+        <label for="username">Username: </label>
+        <br/>
+        <input type="text" name="username_input" id="username" required>
+        <br/>
+        <label for="password">Password: </label>
+        <br/>
+        <input type="password" name="password_input" id="password" required>
+        <br/>
+        <label for="confirm_password">Confirm Password: </label>
+        <br/>
+        <input type="password" name="confirm_password_input" id="confirm_password" required>
+        <br/><br/>
+        <input type="submit" value="Sign Up"/>
+    </form>
+    </section>
+{%  endblock %}

@@ -1,0 +1,55 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<h1>Edit Enemy</h1>
+    <form id="new_enemy_form" method="{{ method }}" action="{{ action }}">
+
+        {% if enemy %}
+            <p class="error_message">{{ create_enemy_error }}</p>
+        <h3>Details:</h3>
+        <label for="enemy_name">Name:</label>
+        <br/>
+        <input type="text" id="enemy_name" name="enemy_name" required value="{{ enemy.enemy_name }}">
+        <br/>
+        <label for="enemy_hp">Total HP:</label>
+        <br/>
+        <input type="text" id="enemy_hp" name="enemy_hp" required value="{{ enemy.enemy_hp }}">
+        <br/>
+        <label for="enemy_ac">AC:</label>
+        <br/>
+        <input type="text" id="enemy_ac" name="enemy_ac" required value="{{ enemy.enemy_ac }}">
+        <br/>
+        <label for="enemy_speed">Speed(ft):</label>
+        <br/>
+        <input type="text" id="enemy_speed" name="enemy_speed" title="walking(flying)" required value="{{ enemy.enemy_speed }}">
+        <br/><br/>
+
+        {# Form section for ability scores #}
+        <h3>Ability Scores:</h3>
+        <label for="strength">Strength:</label>
+        <br/>
+        <input type="text" id="strength" name="strength" value="{{ enemy.strength }}">
+        <br/>
+        <label for="dexterity">Dexterity:</label>
+        <br/>
+        <input type="text" id="dexterity" name="dexterity" value="{{ enemy.dexterity }}">
+        <br/>
+        <label for="constitution">Constitution:</label>
+        <br/>
+        <input type="text" id="constitution" name="constitution" value="{{ enemy.constitution }}">
+        <br/>
+        <label for="intelligence">Intelligence:</label>
+        <br/>
+        <input type="text" id="intelligence" name="intelligence" value="{{ enemy.intelligence }}">
+        <br/>
+        <label for="wisdom">Wisdom:</label>
+        <br/>
+        <input type="text" id="wisdom" name="wisdom" value="{{ enemy.wisdom }}">
+        <br/>
+        <label for="charisma">Charisma:</label>
+        <br/>
+        <input type="text" id="charisma" name="charisma" value="{{ enemy.charisma }}">
+        <br/><br/>
+        <input class="create_item_button" type="submit" value="Save">
+    </form>
+    {% endif %}
+{% endblock %}

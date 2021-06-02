@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang=”en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="{{ css_path }}" type="text/css"/>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<section id="header_section">
+    <div id="header_content">
+        <h1 id="main_heading">DM Friend</h1>
+        <h2 id="sub_heading">D&D Encounter Builder</h2>
+    </div>
+</section>
+<section id="navigation_links_section">
+    <div id="navigation_content">
+        <ul id="navigation_links">
+            <li id="home_link"><a href="{{ path_for('homepage') }}">Home</a></li>
+{#            <li id="enemies_link"><a href="{{ path_for('my_enemies') }}">Enemies</a></li>#}
+            <li class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Enemies</a>
+                <div class="dropdown-content">
+                    <a href="{{ path_for('default_enemies') }}">Standard</a>
+                    <a href="{{ path_for('my_enemies') }}">Custom Enemies</a>
+                </div>
+            </li>
+            <li id="encounters_link"><a href="{{ path_for('my_encounters') }}">Encounters</a></li>
+{#            <li id="logout_link"><a href="{{ path_for('logout') }}">Log out</a></li>#}
+            <li id="logout_link" class="dropdown">
+                <a href="javascript:void(0)" class="dropbtn">Account</a>
+                <div class="dropdown-content">
+                    <a href="{{ path_for('account_settings') }}">Account Settings</a>
+                    <a href="{{ path_for('logout') }}">Log Out</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+<section id="page_content_section">
+    <div id="page_content">
+        {% block content %}{% endblock %}
+    </div>
+</section>
+</body>
+</html>
+
+
+

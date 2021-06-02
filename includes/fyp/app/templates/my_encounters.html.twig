@@ -1,0 +1,42 @@
+{% extends 'layout.html.twig' %}
+{% block title %} My Encounters - DM Friend {% endblock %}
+{% block content %}
+    <h3>{{ page_title }}</h3>
+    <form method="get" action="new_encounter">
+        <button id="new_enemy_button" type="submit" class="create_item_button"> New Encounter </button>
+    </form>
+    {% if no_encounters %}
+        <p>{{ no_encounters }}</p>
+    {% endif %}
+    {% if encounter_content %}
+        <section id="user_enemies">
+            {%  for encounter in encounter_content %}
+                <div class="enemy_details">
+                    <ul id="enemy_basic_details">
+                        <li class="bold_text" id="enemy_name">{{ encounter.encounter_name }} </li>
+                        <li>Location: {{ encounter.location}}  </li>
+                        <li>Enemies: {{ encounter.total_enemies }}</li>
+                        <li id="button">
+                            <form method="post" action="{{ path_for('delete_encounter') }}" class="inline" onsubmit="return confirm('Are you sure you wish to delete this encounter?');">
+                                <input type="hidden" name="encounter_name" value="{{ encounter.encounter_name }}">
+                                <button style="color:red" type="submit" class="view_button"> X </button>
+                            </form>
+                        </li>
+                        <li id="button">
+                            <form method="post" action="encounter_overview" class="inline">
+                                <input type="hidden" name="encounter_name" value="{{ encounter.encounter_name }}">
+                                <button type="submit" class="view_button"> View </button>
+                            </form>
+                        </li>
+                        <li id="button">
+                            <form method="post" action="use_encounter" class="inline">
+                                <input type="hidden" name="encounter_name" value="{{ encounter.encounter_name }}">
+                                <button type="submit" class="view_button"> Use </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </section>
+    {% endif %}
+{% endblock %}

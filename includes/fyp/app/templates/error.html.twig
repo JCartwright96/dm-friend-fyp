@@ -1,0 +1,10 @@
+{% extends 'no_nav_layout.html.twig' %}
+{% block title %} New Encounter - DM Friend {% endblock %}
+{% block content %}
+    <section id="error_content">
+        <h1>Error - Page Not Found</h1>
+        <h3>We're sorry, that page may not exist or it can't be reached.</h3>
+        <h4>Please log in and try again.</h4>
+        <a href="{{ path_for('logout') }}">Back</a>
+    </section>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Add Actions - DM Friend {% endblock %}
+{% block content %}
+    <h3>{{ page_title }}</h3>
+    <p>Adding to: <b>{{ encounter_name }}</b></p>
+    <form method="get" action="encounter_overview" >
+        <input type="submit" value="Finish">
+    </form>
+    <hr/>
+    <form method="post" action="add_enemies">
+        <input name="searched_enemy" type="text" placeholder="{{ searched_enemy }}">
+        <input type="Submit" value="Search">
+    </form>
+    <h3>Custom Enemies</h3>
+    {% if user_enemies %}
+        <section id="user_enemies">
+            {%  for enemy in user_enemies %}
+                <div class="enemy_details">
+                    <form method="post" action="add_enemies" class="inline">
+                    <ul id="enemy_basic_details">
+                        <li class="bold_text" id="enemy_name">{{ enemy.enemy_name }} </li>
+                        <li>HP: {{ enemy.enemy_hp }}  </li>
+                        <li>AC: {{ enemy.enemy_ac }} </li>
+                        <li>Speed: {{ enemy.enemy_speed}}ft </li>
+                        <li>
+                            <label for="quantity">Quantity:</label> <input type="number" id="quantity" name="quantity" style="width:8%" value="0">
+                        </li>
+                        <li id="button">
+                            <input type="hidden" name="enemy_name" value="{{ enemy.enemy_name }}">
+                            <button type="submit" class="view_button"> Add </button>
+                        </li>
+                    </ul>
+                    </form>
+                </div>
+            {% endfor %}
+        </section>
+    {% endif %}
+    <h3>Standard Enemies</h3>
+    {% if default_enemies %}
+        <section id="user_enemies">
+            {%  for enemy in default_enemies %}
+                <div class="enemy_details">
+                    <form method="post" action="add_enemies" class="inline">
+                        <ul id="enemy_basic_details">
+                            <li class="bold_text" id="enemy_name">{{ enemy.enemy_name }} </li>
+                            <li>HP: {{ enemy.enemy_hp }}  </li>
+                            <li>AC: {{ enemy.enemy_ac }} </li>
+                            <li>Speed: {{ enemy.enemy_speed}}ft </li>
+                            <li>
+                                <label for="quantity">Quantity:</label> <input type="number" id="quantity" name="quantity" style="width:8%" value="0">
+                            </li>
+                            <li id="button">
+                                <input type="hidden" name="default_enemy_name" value="{{ enemy.enemy_name }}">
+                                <button type="submit" class="view_button"> Add </button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            {% endfor %}
+        </section>
+    {% endif %}
+    <br/>
+{% endblock %}

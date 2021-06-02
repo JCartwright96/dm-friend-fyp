@@ -1,0 +1,88 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Use Encounter - DM Friend {% endblock %}
+{% block content %}
+    {% if encounter_details %}
+    <h1>{{ encounter_details.encounter_name | upper }}</h1>
+        <form method="get" action="edit_encounter" class>
+            <button id="new_enemy_button" type="submit" class="create_item_button"> Edit </button>
+        </form>
+    <p><a class="bold_text">Location:</a> {{  encounter_details.location }}</p>
+    <p><a class="bold_text">Description:</a> {{ encounter_details.description }}</p>
+    <p><a class="bold_text">Notes:</a> {{ encounter_details.notes }}</p>
+    {% endif %}
+    <h3 class="overview_heading">Enemies:</h3>
+    <form method="get" action="add_enemies">
+        {#                <input name="{{ enemy.enemy_name }}" type="submit" value="view">#}
+        {#                <a href="{{ path_for('enemy_overview') }}">View</a>#}
+        <input type="hidden" name="enemy_name" value="{{ enemy_details.enemy_name }}">
+        <button type="submit" class="create_item_button"> Add Enemies </button>
+    </form>
+    <br/>
+    {% if enemy_details %}
+        {%  for enemy in enemy_details %}
+            {% if enemy.quantity > 1 %}
+                {% for i in 1..enemy.quantity %}
+                <section id="user_enemies">
+                    <div class="enemy_details">
+                        <ul id="enemy_basic_details">
+                            <li class="bold_text" id="enemy_name">{{ enemy.enemy_name }} {{ i }} </li>
+                            <li>HP: <input id="current_hp" type="text" value="{{ enemy.enemy_hp }}"> / {{ enemy.enemy_hp }}  </li>
+                            <li>AC: {{ enemy.enemy_ac }} </li>
+                            <li>Speed: {{ enemy.enemy_speed}}ft </li>
+                            <li id="button">
+                                <form method="post" action="enemy_overview" class="inline">
+                                    <input type="hidden"{% if enemy.default_enemy %} name="default_enemy_name" {% else %} name="enemy_name" {% endif%}  value="{{ enemy.enemy_name }}">
+                                    <button formtarget="_blank" type="submit" class="view_button"> View </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                {% endfor %}
+            {% else %}
+                <section id="user_enemies">
+                    <div class="enemy_details">
+                        <ul id="enemy_basic_details">
+                            <li class="bold_text" id="enemy_name">{{ enemy.enemy_name }} </li>
+                            <li>HP: <input id="current_hp" type="text" value="{{ enemy.enemy_hp }}"> / {{ enemy.enemy_hp }}  </li>
+                            <li>AC: {{ enemy.enemy_ac }} </li>
+                            <li>Speed: {{ enemy.enemy_speed}}ft </li>
+                            <li id="button">
+                                <form method="post" action="enemy_overview" class="inline" >
+                                    <input  type="hidden"{% if enemy.default_enemy %} name="default_enemy_name" {% else %} name="enemy_name" {% endif%}  value="{{ enemy.enemy_name }}" >
+                                    <button formtarget="_blank" type="submit" class="view_button" > View </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+
+{#<table>#}
+{#    <tr class="header_row">#}
+{#        <th>Name</th>#}
+{#        <th>HP</th>#}
+{#        <th>AC </th>#}
+{#        <th>Speed(ft)</th>#}
+{#        <th>Quantity</th>#}
+{#    </tr>#}
+{#    {%  for enemy in enemy_details %}#}
+{#        <tr>#}
+{#            <td>{{ enemy.enemy_name }}</td>#}
+{#            <td>{{ enemy.enemy_hp }}</td>#}
+{#            <td>{{ enemy.enemy_ac }}</td>#}
+{#            <td>{{ enemy.enemy_speed }}</td>#}
+{#            <td>{{ enemy.quantity }}</td>#}
+{#            <td>#}
+{#                <form method="post" action="enemy_overview">#}
+{#                    <input type="hidden" name="enemy_name" value="{{ enemy.enemy_name }}">#}
+{#                    <button type="submit" class="view_button"> View </button>#}
+{#                </form>#}
+{#            </td>#}
+{#        </tr>#}
+{#    {% endfor %}#}
+{#</table>#}

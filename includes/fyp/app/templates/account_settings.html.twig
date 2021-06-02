@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Home - DM Friend  {% endblock %}
+{% block content %}
+    <h1>{{ page_title }}</h1>
+
+    <section id="account_details">
+        <h3>Details</h3>
+        <text><a class="bold_text">Email:</a> {{ user_details.email }}</text>
+        <br/>
+        <text><a class="bold_text">Username:</a> {{ user_details.username }}</text>
+    </section>
+
+    <section id="change_password">
+        <h3>Change Password</h3>
+        {% if error_message %}
+            <p class="error_message">{{ error_message }}</p>
+        {% endif %}
+        {% if success_message %}
+            <p class="success_message">{{ success_message }}</p>
+        {% endif %}
+
+        <form method="{{ method }}" action="{{ action }}">
+        <label for="current_password">Current Password</label>
+        <input type="password" id="current_password" name="current_password">
+        <br/>
+        <label for="new_password">New Password</label>
+        <input type="password" id="new_password" name="new_password">
+        <br/>
+        <label for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" name="confirm_password">
+        <br/>
+        <input type="submit" value="Change Password">
+    </form>
+    </section>
+
+    <br>
+
+    <section id="delete_account_button">
+    <form method="get" action="{{ path_for('delete_account') }}" onsubmit="return confirm('Are you sure you wish to delete your account');">
+        <input type="hidden" name="enemy_account">
+        <button class="bold_text" type="submit"> DELETE ACCOUNT </button>
+    </form>
+    </section>
+
+{% endblock %}

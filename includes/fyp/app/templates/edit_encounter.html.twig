@@ -1,0 +1,31 @@
+{% extends 'layout.html.twig' %}
+{% block title %} New Encounter - DM Friend {% endblock %}
+{% block content %}
+    {% if encounter %}
+    <h3>Edit Encounter: {{ encounter.encounter_name }}</h3>
+    <p style="color:red">{{ create_encounter_error }}</p>
+
+    <section id="new_encounter_section">
+        <form id="new_encounter_form" method="{{ method }}" action="{{ action }}">
+            {# Form section for basic details #}
+            <label for="encounter_name">Encounter Name:</label>
+            <br/>
+            <input type="text" id="encounter_name" name="encounter_name" value="{{ encounter.encounter_name }}">
+            <br/>
+            <label for="encounter_location">Location:</label>
+            <br/>
+            <input type="text" id="encounter_location" name="encounter_location" value="{{ encounter.location }}">
+            <br/>
+            <label for="encounter_description">Description:</label>
+            <br/>
+            <textarea cols="20" rows="3" id="encounter_description" name="encounter_description">{{ encounter.description }}</textarea>
+            <br/>
+            <label for="encounter_notes">Extra Notes:</label>
+            <br/>
+            <textarea cols="30" rows="5" name="encounter_notes" id="encounter_notes">{{ encounter.notes }}</textarea>
+            <br/>
+            <input class="create_item_button" type="submit" value="Save">
+        </form>
+    </section>
+    {% endif %}
+{% endblock %}

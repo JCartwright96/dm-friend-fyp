@@ -1,0 +1,129 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Add Actions - DM Friend {% endblock %}
+{% block content %}
+    <h3>{{ page_title }}</h3>
+    <p>Adding to:  <b>{{ enemy_name }}</b></p>
+    <section id="add_actions_sections">
+    <section id="current_actions_section">
+        {% if current_actions %}
+            <p>Current actions:</p>
+            <p style="color:green">{{ success_message }}</p>
+            <p style="color:red">{{ error_message }}</p>
+            <section id="user_enemies">
+                <table class="actions_table">
+                    <tr class="header_row">
+                        <th>Action</th>
+                        <th>Reach(ft)</th>
+                        <th>Area/Shape</th>
+                        <th>Hit/DC</th>
+                        <th>Damage</th>
+                        <th>Modifier</th>
+                        <th class="no_border"></th>
+                    </tr>
+                {%  for action in current_actions %}
+                    <tr>
+                        <td>{{ action.action_name }}</td>
+                        <td>{{ action.reach }}</td>
+                        <td>{{ action.area }}</td>
+                        <td>{{ action.hit_chance}}</td>
+                        <td>{{ action.damage }}</td>
+                        <td>{{ action.modifier }}</td>
+                        <td >
+                            <form method="post" action="{{ path_for('delete_action') }}" class="inline" onsubmit="return confirm('Are you sure you wish to delete this action?');">
+                                <input type="hidden" name="action_name" value="{{ action.action_name }}">
+                                <button style="color:red" type="submit" class="view_button"> X </button>
+                            </form>
+                            <form method="post" action="edit_action" class="inline">
+                                <input type="hidden" name="action_name" value="{{ action.action_name }}">
+                                <button type="submit" class="view_button"> Edit </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </section>
+        {% endif %}
+    </section>
+    <section id="new_action_section">
+        <h3>New Action</h3>
+        <form method="{{ method }}" action="{{ action }}" id="new_action_form">
+            <label for="action_name">Name:</label>
+            <br/>
+            <input type="text" id="action_name" name="action_name" required>
+            <br/>
+            <label for="action_reach">Reach/Range (ft):</label>
+            <br/>
+            <input type="text" id="action_reach" name="action_reach" required>
+            <br/>
+            <label for="action_area">Area/Shape:</label>
+            <br/>
+            <input type="text" id="action_area" name="action_area">
+            <br/>
+            <label for="action_hit">Hit/DC:</label>
+            <br/>
+            <input type="text" id="action_hit" name="action_hit" required>
+            <br/>
+            <label for="action_damage">Damage (dice):</label>
+            <br/>
+            <input type="text" id="action_damage" name="action_damage" required>
+            <br/>
+            <label for="action_modifier">Modifier:</label>
+            <br/>
+            <input type="text" id="action_modifier" name="action_modifier">
+            <br/>
+            <br/>
+            <input type="submit" value="Add">
+        </form>
+    </section>
+{#    <section id="new_action_section">#}
+{#        <h3>New Spell</h3>#}
+{#        <form method="{{ method }}" action="{{ action }}" id="new_action_form">#}
+{#            <label for="action_name">Spell:</label>#}
+{#            <br/>#}
+{#            <input type="text" id="action_name" name="action_name" required>#}
+{#            <br/>#}
+{#            <label for="action_modifier">Casting Time:</label>#}
+{#            <br/>#}
+{#            <input type="text" id="action_modifier" name="action_modifier">       <br/>#}
+{#            <label for="action_reach">Reach/Range (ft):</label>#}
+{#            <br/>#}
+{#            <input type="text" id="action_reach" name="action_reach" required>#}
+{#            <br/>#}
+{#            <label for="action_area">Area/Shape:</label>#}
+{#            <br/>#}
+{#            <input type="text" id="action_area" name="action_area">#}
+{#            <br/>#}
+{#            <label for="action_hit">Hit/DC:</label>#}
+{#            <br/>#}
+{#            <input type="text" id="action_hit" name="action_hit" required>#}
+{#            <br/>#}
+{#            <label for="action_damage">Damage (dice):</label>#}
+{#            <br/>#}
+{#            <input type="text" id="action_damage" name="action_damage" required>#}
+{#            <br/>#}
+{#            <label for="action_modifier">Modifier:</label>#}
+{#            <br/>#}
+{#            <input type="text" id="action_modifier" name="action_modifier">#}
+{#            <br/>#}
+{#            <label for="action_modifier">Duration:</label>#}
+{#            <br/>#}
+{#            <input type="text" id="action_modifier" name="action_modifier">#}
+{#            <br/>#}
+{#            <label for="action_modifier">Components:</label>#}
+{#            <br/>#}
+{#            <input type="text" id="action_modifier" name="action_modifier">#}
+{#            <br/>#}
+{#            <label for="action_modifier">Notes:</label>#}
+{#            <br/>#}
+{#            <textarea id="action_modifier" name="action_modifier"></textarea>#}
+{#            <br/>#}
+{#            <br/>#}
+{#            <input type="submit" value="Add">#}
+{#        </form>#}
+{#    </section>#}
+        <br/>
+        <form method="get" action="enemy_overview">
+            <input type="submit" value="Finish">
+        </form>
+    </section>
+{% endblock %}

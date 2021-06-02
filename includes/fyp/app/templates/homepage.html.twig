@@ -1,0 +1,52 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Home - DM Friend  {% endblock %}
+{% block content %}
+    <h3>{{ page_title }}</h3>
+    <h3>Recent Enemies</h3>
+    {% if enemies %}
+    <section id="user_enemies">
+        {%  for enemy in enemies %}
+            <div class="enemy_details">
+                <ul id="enemy_basic_details">
+                    <li class="bold_text" id="enemy_name">{{ enemy.enemy_name }}</li>
+                    <li>HP: {{ enemy.enemy_hp }}</li>
+                    <li>AC: {{ enemy.enemy_ac }}</li>
+                    <li>Speed: {{ enemy.enemy_speed}}ft</li>
+                    <li id="button">
+                        <form method="post" action="enemy_overview" class="inline">
+                            {#                <input name="{{ enemy.enemy_name }}" type="submit" value="view">#}
+                            {#                <a href="{{ path_for('enemy_overview') }}">View</a>#}
+                            <input type="hidden" name="enemy_name" value="{{ enemy.enemy_name }}">
+                            <button type="submit" class="view_button"> View </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        {% endfor %}
+    </section>
+    {% else %}
+        <p>You have no enemies. But you can create some <a href="new_enemy">here</a></p>
+    {% endif %}
+    <h3>Recent Encounters</h3>
+    {% if encounters %}
+        <section id="user_enemies">
+            {%  for encounter in encounters %}
+                <div class="enemy_details">
+                    <ul id="enemy_basic_details">
+                        <li class="bold_text" id="enemy_name">{{ encounter.encounter_name }}</li>
+                        <li>Location: {{ encounter.location }}</li>
+                        <li id="button">
+                            <form method="post" action="encounter_overview" class="inline">
+
+                                <input type="hidden" name="encounter_name" value="{{ encounter.encounter_name }}">
+                                <button type="submit" class="view_button"> View </button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            {% endfor %}
+        </section>
+    {% else %}
+        <p>You have no encounters. But you can create some <a href="new_encounter">here</a></p>
+    {% endif %}
+{% endblock %}

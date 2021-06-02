@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/includes/fyp/app/src" isTestSource="false" packagePrefix="Fyp\" />
+      <sourceFolder url="file://$MODULE_DIR$/../FYPSlim/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../FYPSlim/tests" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/annotations" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/collections" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/common" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/dbal" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/event-manager" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/inflector" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/instantiator" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/lexer" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/orm" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/persistence" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/doctrine/reflection" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/jeremeamia/superclosure" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/monolog/monolog" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/nikic/fast-route" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/nikic/php-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/ocramius/package-versions" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phar-io/manifest" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phar-io/version" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/php-di/invoker" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/php-di/php-di" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/php-di/phpdoc-reader" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phpdocumentor/reflection-common" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phpdocumentor/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phpspec/prophecy" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phpunit/php-code-coverage" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phpunit/php-file-iterator" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phpunit/php-text-template" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phpunit/php-timer" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phpunit/php-token-stream" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/phpunit/phpunit" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/pimple/pimple" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/psr/http-message" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/psr/log" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/code-unit-reverse-lookup" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/comparator" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/diff" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/environment" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/exporter" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/global-state" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/object-enumerator" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/object-reflector" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/recursion-context" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/resource-operations" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/type" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/slim/slim" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/slim/twig-view" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/symfony/console" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/symfony/polyfill-ctype" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/symfony/polyfill-php56" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/symfony/polyfill-php73" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/symfony/polyfill-util" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/twig/twig" />
+      <excludeFolder url="file://$MODULE_DIR$/includes/vendor/webmozart/assert" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

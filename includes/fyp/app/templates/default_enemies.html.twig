@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Standard Enemies - DM Friend {% endblock %}
+{% block content %}
+    <h3>Enemies</h3>
+    <p>Browse and use DM Friend's Pre-Created Enemies</p>
+    <p>All Enemies are based on their stats from the 5e official books.</p>
+{% if enemies%}
+    <section id="user_enemies">
+    {%  for enemy in enemies %}
+        <div class="enemy_details">
+        <ul id="enemy_basic_details">
+            <li class="bold_text" id="enemy_name">{{ enemy.enemy_name }} </li>
+            <li>HP: {{ enemy.enemy_hp }}  </li>
+            <li>AC: {{ enemy.enemy_ac }} </li>
+            <li>Speed: {{ enemy.enemy_speed}}ft </li>
+            <li id="button">
+                <form method="post" action="enemy_overview" class="inline">
+                    <input type="hidden" name="default_enemy_name" value="{{ enemy.enemy_name }}">
+                    <button type="submit" class="view_button"> View </button>
+                </form>
+            </li>
+        </ul>
+        </div>
+    {% endfor %}
+    </section>
+{% endif %}
+{% endblock %}

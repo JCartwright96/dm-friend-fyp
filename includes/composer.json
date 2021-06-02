@@ -1,0 +1,21 @@
+{
+    "name": "dmu/php_apps",
+    "type": "project",
+    "require": {
+        "slim/slim": "^3.12",
+        "slim/twig-view": "^2.4",
+        "monolog/monolog": "^2",
+        "doctrine/orm": "^2.6",
+        "phpunit/phpunit": "^8",
+        "php-di/php-di": "6.1.0"
+    },
+    "require-dev": {
+        "ext-sodium": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fyp\\": "fyp/app/src",
+            "Tests\\" : "fyp/test"
+        }
+    }
+}

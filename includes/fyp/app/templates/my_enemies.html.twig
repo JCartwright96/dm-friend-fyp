@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+{% block title %} My Enemies - DM Friend {% endblock %}
+{% block content %}
+    <h3>{{ page_title }}</h3>
+    <form method="get" action="new_enemy" class>
+        <button id="new_enemy_button" type="submit" class="create_item_button"> New Enemy </button>
+    </form>
+
+    {% if no_enemies %}
+        <p>{{ no_enemies }}</p>
+    {% endif %}
+
+{% if enemies_content %}
+    <section id="user_enemies">
+    {%  for enemy in enemies_content %}
+        <div class="enemy_details">
+        <ul id="enemy_basic_details">
+            <li class="bold_text" id="enemy_name">{{ enemy.enemy_name }} </li>
+            <li>HP: {{ enemy.enemy_hp }}  </li>
+            <li>AC: {{ enemy.enemy_ac }} </li>
+            <li>Speed: {{ enemy.enemy_speed}}ft </li>
+            <li id="button">
+                <form method="post" action="{{ path_for('delete_enemy') }}" class="inline" onsubmit="return confirm('Are you sure you wish to delete this enemy?');">
+                    <input type="hidden" name="enemy_name" value="{{ enemy.enemy_name }}">
+                    <button style="color:red" type="submit" class="view_button"> X </button>
+                </form>
+            </li>
+            <li id="button">
+                <form method="post" action="enemy_overview" class="inline">
+                    <input type="hidden" name="enemy_name" value="{{ enemy.enemy_name }}">
+                    <button type="submit" class="view_button"> View </button>
+                </form>
+            </li>
+        </ul>
+        </div>
+    {% endfor %}
+    </section>
+{% endif %}
+{% endblock %}

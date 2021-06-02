@@ -1,0 +1,36 @@
+{% extends 'layout.html.twig' %}
+{% block title %} Add Actions - DM Friend {% endblock %}
+{% block content %}
+    <h3>{{ page_title }}</h3>
+    <p>Editing action:  <b>{{ action_details.action_name }}</b></p>
+    <p class="error_message">{{ create_action_error }}</p>
+    <section id="new_action_section">
+        <form method="{{ method }}" action="{{ action }}" id="new_action_form">
+            <label for="action_name">Name:</label>
+            <br/>
+            <input type="text" id="action_name" name="action_name" required value="{{ action_details.action_name }}">
+            <br/>
+            <label for="action_reach">Reach/Range (ft):</label>
+            <br/>
+            <input type="text" id="action_reach" name="action_reach" required  value="{{ action_details.reach }}">
+            <br/>
+            <label for="action_area">Area of effect (ft):</label>
+            <br/>
+            <input type="text" id="action_area" name="action_area" value="{{ action_details.area }}">
+            <br/>
+            <label for="action_hit">Hit/DC:</label>
+            <br/>
+            <input type="text" id="action_hit" name="action_hit" required value="{{ action_details.hit_chance }}">
+            <br/>
+            <label for="action_damage">Damage (dice):</label>
+            <br/>
+            <input type="text" id="action_damage" name="action_damage" required value="{{ action_details.damage }}">
+            <br/>
+            <label for="action_modifier">Modifier:</label>
+            <br/>
+            <input type="text" id="action_modifier" name="action_modifier" value="{{ action_details.modifier }}">
+            <br/>
+            <br/>
+            <input type="submit" value="Save">
+        </form>
+{% endblock %}

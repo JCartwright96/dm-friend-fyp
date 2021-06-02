@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang=”en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="{{ css_path }}" type="text/css"/>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<section id="header_section">
+    <div id="header_content">
+        <h1 id="main_heading">DM Friend</h1>
+        <h2 id="sub_heading">D&D Encounter Builder</h2>
+    </div>
+</section>
+<section id="page_content_section">
+    <div id="page_content">
+        {% block content %}{% endblock %}
+    </div>
+</section>
+</body>
+</html>

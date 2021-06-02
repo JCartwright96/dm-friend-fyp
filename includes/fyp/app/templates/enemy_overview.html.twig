@@ -1,0 +1,117 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    {% if enemy_details %}{{ enemy_details.enemy_name }}{% endif %}
+    {% if default_enemy_details %}{{ default_enemy_details.enemy_name }}{% endif %}
+     - DM Friend Enemy
+{% endblock %}
+{% block content %}
+    {% if enemy_details  %}
+        <h1>{{ enemy_details.enemy_name | upper }}</h1>
+        <form method="get" action="edit_enemy" class>
+            <button id="new_enemy_button" type="submit" class="create_item_button"> Edit </button>
+        </form>
+        <h3 class="overview_heading">Details</h3>
+        <ul class="overview_details">
+            <li><a class="bold_text">HP:</a> {{ enemy_details.enemy_hp }}</li>
+            <li><a class="bold_text">AC:</a> {{ enemy_details.enemy_ac }}</li>
+            <li><a class="bold_text">Speed:</a> {{ enemy_details.enemy_speed }}ft</li>
+        </ul>
+        <h3 class="overview_heading">Ability Scores</h3>
+        <ul class="overview_details">
+            <li><a class="bold_text">Str:</a> {{ enemy_details.strength }} ({{ (((enemy_details.strength -10) / 2 ) - 0.1) | round(floor)}})</li>
+            <li><a class="bold_text">Dex:</a> {{ enemy_details.dexterity }} ({{ (((enemy_details.dexterity -10) / 2 ) - 0.1) | round(floor)}})</li>
+            <li><a class="bold_text">Con:</a> {{ enemy_details.constitution }} ({{ (((enemy_details.constitution -10) / 2 ) - 0.1) | round(floor)}})</li>
+            <li><a class="bold_text">Wis:</a> {{ enemy_details.intelligence }} ({{ (((enemy_details.intelligence -10) / 2 ) - 0.1) | round(floor)}})</li>
+            <li><a class="bold_text">Int:</a> {{ enemy_details.wisdom }} ({{ (((enemy_details.wisdom -10) / 2 ) - 0.1) | round(floor)}})</li>
+            <li><a class="bold_text">Cha:</a> {{ enemy_details.charisma }} ({{ (((enemy_details.charisma -10) / 2 ) - 0.1) | round(floor)}})</li>
+        </ul>
+        <section id="current_actions_section">
+        <h3 class="overview_heading">Actions:</h3>
+        <form method="get" action="add_actions">
+            <input type="hidden" name="enemy_name" value="{{ enemy_details.enemy_name }}">
+            <button type="submit" class="create_item_button"> Edit Actions </button>
+        </form>
+        <br/>
+        {% if enemy_actions %}
+            <section id="user_enemies">
+                <table>
+                    <tr>
+                        <th>Action</th>
+                        <th>Reach(ft)</th>
+                        <th>Area(ft)</th>
+                        <th>Hit/DC</th>
+                        <th>Damage</th>
+                        <th>Modifier</th>
+                    </tr>
+                    {%  for action in enemy_actions %}
+                        <tr>
+                            <td>{{ action.action_name }}</td>
+                            <td>{{ action.reach }}</td>
+                            <td>{{ action.area }}</td>
+                            <td>{{ action.hit_chance}}</td>
+                            <td>{{ action.damage }}</td>
+                            <td>{{ action.modifier }}</td>
+                            {#                    <td>#}
+                            {#                        <form method="post" action="{{ path_for('delete_action') }}" class="inline" onsubmit="return confirm('Are you sure you wish to delete this action?');">#}
+                            {#                            <input type="hidden" name="action_name" value="{{ action.action_name }}">#}
+                            {#                            <button style="color:red" type="submit" class="view_button"> X </button>#}
+                            {#                        </form>#}
+                            {#                        <form method="post" action="edit_action" class="inline">#}
+                            {#                            <input type="hidden" name="action_name" value="{{ action.action_name }}">#}
+                            {#                            <button type="submit" class="view_button"> Edit </button>#}
+                            {#                        </form>#}
+                            {#                    </td>#}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </section>
+        {% endif %}
+    {% endif %}
+
+    {% if default_enemy_details %}
+        <h1>{{ default_enemy_details.enemy_name | upper }}</h1>
+        <h3 class="overview_heading">Details</h3>
+        <ul class="overview_details">
+            <li><a class="bold_text">HP:</a> {{ default_enemy_details.enemy_hp }}</li>
+            <li><a class="bold_text">AC:</a> {{ default_enemy_details.enemy_ac }}</li>
+            <li><a class="bold_text">Speed:</a> {{ default_enemy_details.enemy_speed }}ft</li>
+        </ul>
+        <h3 class="overview_heading">Ability Scores</h3>
+        <ul class="overview_details">
+            <li><a class="bold_text">Str:</a> {{ default_enemy_details.strength }} ({{ (((default_enemy_details.strength  -10) / 2 ) - 0.1) | round(floor)}})</li>
+            <li><a class="bold_text">Dex:</a> {{ default_enemy_details.dexterity }} ({{ (((default_enemy_details.dexterity -10) / 2 ) - 0.1) | round(floor)}})</li>
+            <li><a class="bold_text">Con:</a> {{ default_enemy_details.constitution }} ({{ (((default_enemy_details.constitution -10) / 2 ) - 0.1) | round(floor)}})</li>
+            <li><a class="bold_text">Wis:</a> {{ default_enemy_details.intelligence }} ({{ (((default_enemy_details.intelligence -10) / 2 ) - 0.1) | round(floor)}})</li>
+            <li><a class="bold_text">Int:</a> {{ default_enemy_details.wisdom }} ({{ (((default_enemy_details.wisdom  -10) / 2 ) - 0.1) | round(floor)}})</li>
+            <li><a class="bold_text">Cha:</a> {{ default_enemy_details.charisma }} ({{ (((default_enemy_details.charisma -10) / 2 ) - 0.1) | round(floor)}})</li>
+        </ul>
+    <section id="current_actions_section">
+        <h3 class="overview_heading">Actions:</h3>
+        <br/>
+        {% if default_enemy_actions %}
+            <section id="user_enemies">
+                <table>
+                    <tr>
+                        <th>Action</th>
+                        <th>Reach(ft)</th>
+                        <th>Area/Shape</th>
+                        <th>Hit/DC</th>
+                        <th>Damage</th>
+                        <th>Modifier</th>
+                    </tr>
+                    {%  for action in default_enemy_actions %}
+                        <tr>
+                            <td>{{ action.action_name }}</td>
+                            <td>{{ action.reach }}</td>
+                            <td>{{ action.area }}</td>
+                            <td>{{ action.hit_chance}}</td>
+                            <td>{{ action.damage }}</td>
+                            <td>{{ action.modifier }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </section>
+        {% endif %}
+    {% endif %}
+{% endblock %}
